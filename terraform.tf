@@ -1,7 +1,7 @@
 terraform {
 
   backend "s3" {
-    bucket = "terraform-zomato7-project"
+    bucket = "terraform1-zomato1-project"
     key    = "terraform.tfstate"
     region = "ap-south-1"
   }
