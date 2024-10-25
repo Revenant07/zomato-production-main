@@ -35,6 +35,13 @@ variable "frontend_ports" {
   description = "frontend security group ports"
 }
 
+variable "monitoring_ports" {
+  type        = list(string)
+  description = "Monitoring security group ports"
+}
+
+
+
 variable "domain_name" {
   type = string
   description = "my domain"
