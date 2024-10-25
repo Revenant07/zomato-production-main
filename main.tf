@@ -77,6 +77,24 @@ resource "aws_security_group_rule" "frontend_ingress_rule" {
 }
 
 
+# creating monitoring Ec2 instance
+
+resource "aws_instance" "monitoring" {
+
+  ami                    = var.ec2_ami_id
+  instance_type          = var.ec2_type
+  key_name               = aws_key_pair.ssh_keypair.key_name
+  monitoring             = false
+  vpc_security_group_ids = [aws_security_group.monitoring.id]
+  tags = {
+    Name = "${var.project_name}-${var.project_environment}-monitoring"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+}
 
 # creating Ec2 instance
 resource "aws_instance" "frontend" {
